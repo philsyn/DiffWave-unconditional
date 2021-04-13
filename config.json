@@ -1,0 +1,42 @@
+{   
+    "diffusion_config":{
+        "T": 200,
+        "beta_0": 0.0001,
+        "beta_T": 0.02
+    },
+    "wavenet_config": {
+        "in_channels": 1, 
+        "res_channels": 256, 
+        "skip_channels": 256, 
+        "out_channels": 1, 
+        "num_res_layers": 36, 
+        "dilation_cycle": 12, 
+        "diffusion_step_embed_dim_in": 128,
+        "diffusion_step_embed_dim_mid": 512,
+        "diffusion_step_embed_dim_out": 512
+    },
+    "train_config": {
+        "output_directory": "logs/checkpoint",
+        "tensorboard_directory": "logs/tensorboard",
+        "ckpt_iter": "max",
+        "iters_per_ckpt": 10000,
+        "iters_per_logging": 100,
+        "n_iters": 1000001,
+        "learning_rate": 2e-4,
+        "batch_size_per_gpu": 2
+    },
+    "trainset_config":{
+        "data_path": "/tmp2/SC09/train",
+        "segment_length": 16000,
+        "sampling_rate": 16000
+    },
+    "gen_config":{
+        "tensorboard_directory": "logs/tensorboard",
+        "output_directory": "speeches",
+        "ckpt_path": "logs/checkpoint"
+    },
+    "dist_config": {
+        "dist_backend": "nccl",
+        "dist_url": "tcp://localhost:54321"
+    }
+}
